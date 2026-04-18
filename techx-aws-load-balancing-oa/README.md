@@ -123,7 +123,7 @@ All commands used for setup are recorded in [commands.txt](/Users/ac/techx-aws-l
 
 ### ALB DNS URL
 
-`PASTE-ALB-DNS-HERE`
+`http://web-alb-1125866445.us-east-2.elb.amazonaws.com`
 
 Example:
 
@@ -131,7 +131,7 @@ Example:
 
 ### GitHub Repository
 
-`PASTE-GITHUB-REPO-LINK-HERE`
+`https://github.com/agc000/techx-ec2.git`
 
 ### Demo Recording
 
