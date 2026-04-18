@@ -1,27 +1,11 @@
-# Distributed Systems Basics - Load Balancing on AWS
-# Paste or update the exact commands you used below.
-
-########################################
-# REPLACE THESE PLACEHOLDERS FIRST
-########################################
-
 KEY_PATH="~/Downloads/techx-oa-keypair.pem"
 EC2_1_PUBLIC_IP="18.188.84.212"
 EC2_2_PUBLIC_IP="18.118.103.228"
-ALB_DNS="YOUR_ALB_DNS"
+ALB_DNS="web-alb-1125866445.us-east-2.elb.amazonaws.com"
 
-########################################
-# OPTIONAL: LOCAL PREP
-########################################
+chmod 400 ~/Downloads/techx-oa-keypair.pem
 
-chmod 400 ~/Downloads/your-key.pem
-
-########################################
-# EC2 INSTANCE 1
-########################################
-
-ssh -i ~/Downloads/your-key.pem ubuntu@$EC2_1_PUBLIC_IP
-
+ssh -i ~/Downloads/techx-oa-keypair.pem ubuntu@$EC2_1_PUBLIC_IP
 sudo apt update
 sudo apt install nginx -y
 echo '<h1>Server 1</h1>' | sudo tee /var/www/html/index.html
@@ -30,12 +14,7 @@ sudo systemctl restart nginx
 curl http://localhost
 exit
 
-########################################
-# EC2 INSTANCE 2
-########################################
-
-ssh -i ~/Downloads/your-key.pem ubuntu@$EC2_2_PUBLIC_IP
-
+ssh -i ~/Downloads/techx-oa-keypair.pem ubuntu@$EC2_2_PUBLIC_IP
 sudo apt update
 sudo apt install nginx -y
 echo '<h1>Server 2</h1>' | sudo tee /var/www/html/index.html
@@ -44,30 +23,10 @@ sudo systemctl restart nginx
 curl http://localhost
 exit
 
-########################################
-# OPTIONAL: TEST PUBLIC IPS
-########################################
-
 curl http://$EC2_1_PUBLIC_IP
 curl http://$EC2_2_PUBLIC_IP
-
-########################################
-# OPTIONAL: TEST ALB
-########################################
-
-curl http://$ALB_DNS
-curl http://$ALB_DNS
-curl http://$ALB_DNS
-curl http://$ALB_DNS
 curl http://$ALB_DNS
 
-########################################
-# GIT / GITHUB
-########################################
-
-git init
-git add README.md commands.txt
-git commit -m "Add AWS load balancing assignment notes"
-git branch -M main
-git remote add origin YOUR_GITHUB_REPO_URL
+git add techx-aws-load-balancing-oa/README.md techx-aws-load-balancing-oa/commands.txt
+git commit -m "Add AWS load balancing assignment"
 git push -u origin main
